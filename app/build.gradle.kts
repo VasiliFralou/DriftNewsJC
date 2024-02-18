@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -9,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "by.vfdev.driftnewsjc"
-        minSdk = 28
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -53,6 +55,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui")
@@ -66,4 +69,39 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //Splash Api
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    //Compose Navigation
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.45")
+    kapt("com.google.dagger:hilt-android-compiler:2.45")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    //Kotlinx Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //Datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //Compose Foundation
+    implementation("androidx.compose.foundation:foundation:1.6.1")
+
+    //Accompanist
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
