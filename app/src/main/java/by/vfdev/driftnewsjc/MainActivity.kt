@@ -10,25 +10,26 @@ import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import by.vfdev.driftnewsjc.domain.usecases.app_entry.AppEntryUseCases
+import androidx.hilt.navigation.compose.hiltViewModel
 import by.vfdev.driftnewsjc.presentation.onboarding.OnBoardingScreen
+import by.vfdev.driftnewsjc.presentation.onboarding.OnBoardingViewModel
 import by.vfdev.driftnewsjc.ui.theme.DriftNewsJCTheme
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var useCases: AppEntryUseCases
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-
         installSplashScreen()
         setContent {
-            DriftNewsJCTheme(
-                dynamicColor = false
-            ) {
+            DriftNewsJCTheme(dynamicColor = false) {
                 Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-                    OnBoardingScreen()
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(onEvent = viewModel::onEvent)
                 }
             }
         }
