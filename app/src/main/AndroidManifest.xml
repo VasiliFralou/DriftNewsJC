@@ -16,7 +16,7 @@
         android:theme="@style/Theme.DriftNewsJC"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.mainActivity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.DriftNewsJC">
             <intent-filter>
