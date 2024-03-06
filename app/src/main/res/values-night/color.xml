@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="display_small">#FFFFFFFF</color>
+    <color name="display_small">#F30000</color>
     <color name="text_medium">#FFB0B3B8</color>
+    <color name="text_title">#FFFFFF</color>
+    <color name="body">#A3A3A3</color>
+    <color name="input_background">#FFB0B3B8</color>
+    <color name="placeholder">#A0A3BD</color>
+    <color name="shimmer">#C3C3C3</color>
 </resources>
